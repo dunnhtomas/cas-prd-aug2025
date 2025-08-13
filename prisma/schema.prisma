@@ -1,0 +1,18 @@
+// Prisma schema for CAS PRD
+// Run: npx prisma generate && npx prisma migrate dev --name init (if migrations desired)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model EventLog {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  type      String
+  payload   String?
+}
